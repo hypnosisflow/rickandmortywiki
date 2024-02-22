@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import {
   fetchCharacter,
   fetchCharacters,
@@ -6,46 +7,39 @@ import {
   fetchLocation,
   fetchLocations,
 } from "@/constants/api";
-import { useQuery } from "@tanstack/react-query";
 
-export const useCharacters = (nextPage) => {
-  return useQuery({
+export const useCharacters = (nextPage: string | number) =>
+  useQuery({
     queryKey: ["characters", nextPage],
     queryFn: () => fetchCharacters(nextPage),
   });
-};
 
-export const useLocations = () => {
-  return useQuery({
+export const useLocations = () =>
+  useQuery({
     queryKey: ["locations"],
     queryFn: () => fetchLocations(),
   });
-};
 
-export const useEpisodes = () => {
-  return useQuery({
+export const useEpisodes = () =>
+  useQuery({
     queryKey: ["episodes"],
     queryFn: () => fetchEpisodes(),
   });
-};
 
-export const useCharacter = (id: string) => {
-  return useQuery({
+export const useCharacter = (id: string) =>
+  useQuery({
     queryKey: ["character", id],
     queryFn: () => fetchCharacter(id),
   });
-};
 
-export const useLocation = (id: string) => {
-  return useQuery({
+export const useLocation = (id: string) =>
+  useQuery({
     queryKey: ["location", id],
     queryFn: () => fetchLocation(id),
   });
-};
 
-export const useEpisode = (id: string) => {
-  return useQuery({
+export const useEpisode = (id: string) =>
+  useQuery({
     queryKey: ["episode", id],
     queryFn: () => fetchEpisode(id),
   });
-};

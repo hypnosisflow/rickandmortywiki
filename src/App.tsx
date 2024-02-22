@@ -1,9 +1,4 @@
-import { useState } from "react";
-
-import { Button } from "./components/ui/button";
 import { TableView } from "./components/table-view/table-view";
-
-// import "./App.css";
 
 function App() {
   return (
@@ -11,7 +6,6 @@ function App() {
       <h1 className="text-4xl font-bold text-center">'Rick and Morty' WiKi</h1>
 
       <TableView />
-
     </main>
   );
 }
