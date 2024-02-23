@@ -1,31 +1,29 @@
-import { Info } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
-  TableBody,
   TableCaption,
-  TableCell,
-  TableHead,
   TableHeader,
   TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
 } from "@/components/ui/table";
+import { EpisodeProps} from "@/models";
+import { useEpisodes } from "@/state/useCharacter";
+import { DialogTrigger } from "@radix-ui/react-dialog";
+import { Info } from "lucide-react";
 
-import { DialogTrigger } from "@/components/ui/dialog";
-
-import { Button } from "@/components/ui/button";
-import { useLocations } from "@/state/useCharacter";
-import { LocationProps } from "@/models";
-
-export function LocationsTable({
-  setSelectedItem,
+export const EpisodesTable = ({
+  setEpisodeSelected,
 }: {
-  setSelectedItem: (item: LocationProps) => void;
-}) {
-  const { data: locations } = useLocations();
-  const columnsLocos = ["Name", "Type", "Dimension", "Created"];
+  setEpisodeSelected: (episode: EpisodeProps) => void;
+}) => {
+  const { data: episodes } = useEpisodes();
+  const columnsLocos = ["Name", "Air Date", "Episode", "Created"];
 
   return (
     <>
       <TableCaption>
-        A list of characters {locations?.results.length}
+        A list of characters {episodes?.results.length}
       </TableCaption>
       <TableHeader>
         <TableRow>
@@ -35,15 +33,15 @@ export function LocationsTable({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {locations?.results.map((loco: LocationProps) => (
-          <TableRow key={loco.id}>
+        {episodes?.results.map((episode: EpisodeProps) => (
+          <TableRow key={episode.id}>
             <TableCell className="font-medium flex gap-2 items-center">
-              {loco.name}
+              {episode.name}
 
               <DialogTrigger asChild>
                 <TableCell className="flex items-center justify-center">
                   <Button
-                    onClick={() => setSelectedItem(loco)}
+                    onClick={() => setEpisodeSelected(episode)}
                     variant="ghost"
                     size="icon"
                   >
@@ -53,9 +51,9 @@ export function LocationsTable({
               </DialogTrigger>
             </TableCell>
 
-            <TableCell>{loco.type}</TableCell>
-            <TableCell>{loco.dimension}</TableCell>
-            <TableCell>{loco.created}</TableCell>
+            <TableCell>{episode.air_date}</TableCell>
+            <TableCell>{episode.episode}</TableCell>
+            <TableCell>{episode.created}</TableCell>
           </TableRow>
         ))}
       </TableBody>
@@ -63,4 +61,4 @@ export function LocationsTable({
       <Button className="mx-auto">Click me</Button>
     </>
   );
-}
+};
