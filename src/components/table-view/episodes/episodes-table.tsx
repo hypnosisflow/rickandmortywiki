@@ -7,11 +7,10 @@ import {
   TableBody,
   TableCell,
 } from "@/components/ui/table";
-import { EpisodeProps, LocationProps } from "@/models";
+import { EpisodeProps} from "@/models";
 import { useEpisodes } from "@/state/useCharacter";
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { Info } from "lucide-react";
-import React from "react";
 
 export const EpisodesTable = ({
   setEpisodeSelected,

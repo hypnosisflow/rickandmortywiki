@@ -1,7 +1,6 @@
 import { DialogHeader } from "@/components/ui/dialog";
 import { EpisodeProps } from "@/models";
 import { DialogTitle, DialogDescription } from "@radix-ui/react-dialog";
-import React from "react";
 
 export const EpisodeCard = ({
   selectedItem,
