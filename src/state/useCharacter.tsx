@@ -1,29 +1,35 @@
-import { useQuery } from "@tanstack/react-query";
+import {
+  useQuery,
+  keepPreviousData,
+  useInfiniteQuery,
+} from "@tanstack/react-query";
 import {
   fetchCharacter,
   fetchCharacters,
   fetchEpisode,
   fetchEpisodes,
+  fetchInfiniteCharacters,
   fetchLocation,
   fetchLocations,
 } from "@/constants/api";
 
-export const useCharacters = (nextPage: string | number) =>
+export const useCharacters = (nextPage: number) =>
   useQuery({
     queryKey: ["characters", nextPage],
     queryFn: () => fetchCharacters(nextPage),
+    placeholderData: keepPreviousData,
   });
 
-export const useLocations = () =>
+export const useLocations = (nextPage: number) =>
   useQuery({
-    queryKey: ["locations"],
-    queryFn: () => fetchLocations(),
+    queryKey: ["locations", nextPage],
+    queryFn: () => fetchLocations(nextPage),
   });
 
-export const useEpisodes = () =>
+export const useEpisodes = (nextPage: number) =>
   useQuery({
-    queryKey: ["episodes"],
-    queryFn: () => fetchEpisodes(),
+    queryKey: ["episodes", nextPage],
+    queryFn: () => fetchEpisodes(nextPage),
   });
 
 export const useCharacter = (id: string) =>
@@ -42,4 +48,19 @@ export const useEpisode = (id: string) =>
   useQuery({
     queryKey: ["episode", id],
     queryFn: () => fetchEpisode(id),
+  });
+
+export const useInfiniteCharacters = () =>
+  useInfiniteQuery({
+    queryKey: ["characters"],
+    queryFn: ({ pageParam }) => fetchInfiniteCharacters(pageParam),
+    initialPageParam: 1,
+    getPreviousPageParam: (firstPage) => firstPage.info.prev ?? undefined,
+    getNextPageParam: (lastPage, allPages) =>
+      lastPage.info.pages !== allPages.length
+        ? allPages.length + 1
+        : lastPage.info.pages,
+
+    // somehow returns string. so it breakes the query
+    // lastPage.info.next ?? undefined,
   });

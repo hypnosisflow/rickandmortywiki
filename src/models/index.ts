@@ -1,3 +1,5 @@
+import { ColumnDef } from "@tanstack/react-table";
+
 interface CharacterOrigin {
   name: string;
   url: string;
@@ -41,4 +43,34 @@ export interface EpisodeProps {
   characters?: Array<string>;
   url: string;
   created: string;
+}
+
+interface Info {
+  count: number;
+  pages: number;
+  next: string;
+  prev: string;
+}
+export interface TableWrapperProps {
+  info: Info;
+  results: unknown;
+}
+
+export interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData;
+  children: React.ReactElement<
+    unknown,
+    string | React.JSXElementConstructor<unknown>
+  >;
+  next: () => void;
+  prev: () => void;
+  cur: number;
+}
+
+export interface PageControlsProps {
+  next: () => void;
+  prev: () => void;
+  max: number;
+  cur: number;
 }

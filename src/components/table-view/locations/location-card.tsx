@@ -5,24 +5,20 @@ import {
 } from "@/components/ui/dialog";
 import { LocationProps } from "@/models";
 
-export function LocationCard({
-  selectedItem,
-}: {
-  selectedItem: LocationProps | undefined;
-}) {
+export function LocationCard({ item }: { item?: LocationProps | undefined }) {
   return (
     <>
       <DialogHeader>
         <DialogTitle className="flex gap-2 items-center">
-          {selectedItem?.name}
+          {item?.name}
         </DialogTitle>
         <DialogDescription className="flex flex-col gap-4">
-          <span> {selectedItem?.type} </span>
-          <span> {selectedItem?.dimension}</span>
+          <span> {item?.type} </span>
+          <span> {item?.dimension}</span>
           {/* todo: residents */}
           {/* <span> {selectedItem.residents} </span> */}
-          <span> {selectedItem?.created} </span>
-          <span> {selectedItem?.url}</span>
+          <span> {item?.created} </span>
+          <span> {item?.url}</span>
         </DialogDescription>
       </DialogHeader>
     </>

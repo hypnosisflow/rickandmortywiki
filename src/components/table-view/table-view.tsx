@@ -1,55 +1,45 @@
-import { useState } from "react";
-
-import { Table } from "@/components/ui/table";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-
-import { CharacterProps, EpisodeProps, LocationProps } from "@/models";
-import { CharactersTable } from "./characters/characters-table";
-import { CharacterCard } from "./characters/character-card";
-import { LocationsTable } from "./locations/locations-table";
-import { LocationCard } from "./locations/location-card";
-
+import { Suspense, lazy } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { EpisodesTable } from "./episodes/episodes-table";
-import { EpisodeCard } from "./episodes/episode-card";
+
+const Characters = lazy(() => import("./characters/characters"));
+const Locations = lazy(() => import("./locations/locations"));
+const Episodes = lazy(() => import("./episodes/epidodes"));
+
+const TABLES = [
+  {
+    name: "Characters",
+    component: <Characters />,
+  },
+  {
+    name: "Locations",
+    component: <Locations />,
+  },
+  {
+    name: "Episodes",
+    component: <Episodes />,
+  },
+];
 
 export function TableView() {
-  const [charSelected, setCharSelected] = useState<CharacterProps>();
-  const [locoSelected, setLocoSelected] = useState<LocationProps>();
-  const [episodeSelected, setEpisodeSelected] = useState<EpisodeProps>();
+  const Loading = () => <div>Loading...</div>;
 
   return (
-    <Dialog>
-      <Tabs defaultValue="Characters" className="">
-        <TabsList className="mx-auto flex w-fit mt-4">
-          <TabsTrigger value="Characters">Characters</TabsTrigger>
-          <TabsTrigger value="Locations">Locations</TabsTrigger>
-          <TabsTrigger value="Episodes">Episodes</TabsTrigger>
+    <>
+      <Tabs defaultValue="Characters">
+        <TabsList className="mx-auto flex w-fit">
+          {TABLES.map((table) => (
+            <TabsTrigger key={table.name} value={table.name}>
+              {table.name}
+            </TabsTrigger>
+          ))}
         </TabsList>
 
-        <Table>
-          <TabsContent value="Characters">
-            <CharactersTable setSelectedItem={setCharSelected} />
-            <DialogContent className="sm:max-w-[425px]">
-              <CharacterCard selectedItem={charSelected} />
-            </DialogContent>
+        {TABLES.map((table) => (
+          <TabsContent key={table.name} value={table.name}>
+            <Suspense fallback={<Loading />}>{table.component}</Suspense>
           </TabsContent>
-
-          <TabsContent value="Locations">
-            <LocationsTable setSelectedItem={setLocoSelected} />
-            <DialogContent className="sm:max-w-[425px]">
-              <LocationCard selectedItem={locoSelected} />
-            </DialogContent>
-          </TabsContent>
-
-          <TabsContent value="Episodes">
-            <EpisodesTable setEpisodeSelected={setEpisodeSelected} />
-            <DialogContent className="sm:max-w-[425px]">
-              <EpisodeCard selectedItem={episodeSelected} />
-            </DialogContent>
-          </TabsContent>
-        </Table>
+        ))}
       </Tabs>
-    </Dialog>
+    </>
   );
 }
