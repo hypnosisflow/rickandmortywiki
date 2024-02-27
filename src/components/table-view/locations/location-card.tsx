@@ -5,22 +5,33 @@ import {
 } from "@/components/ui/dialog";
 import { LocationProps } from "@/types";
 
-export function LocationCard({ item }: { item?: LocationProps | undefined }) {
+export function LocationCard({ item }: { item?: LocationProps }) {
+  const date = item ? new Date(item.created).toLocaleDateString() : "";
+
   return (
     <>
-      <DialogHeader>
-        <DialogTitle className="flex gap-2 items-center">
-          {item?.name}
+      <DialogHeader >
+        <DialogTitle className="flex flex-col mx-auto items-center">
+          <span className="text-xl">{item?.name}</span>
+          <DialogDescription >
+            <span> {item?.type} </span>
+          </DialogDescription>
         </DialogTitle>
-        <DialogDescription className="flex flex-col gap-4">
-          <span> {item?.type} </span>
-          <span> {item?.dimension}</span>
-          {/* todo: residents */}
-          {/* <span> {selectedItem.residents} </span> */}
-          <span> {item?.created} </span>
-          <span> {item?.url}</span>
-        </DialogDescription>
       </DialogHeader>
+
+      <div>
+        <p>
+          Dimension: <span className="font-medium ml-1">{item?.dimension}</span>
+        </p>
+        <p>
+          Residents:{" "}
+          <span className="font-medium ml-1">{item?.residents?.length}</span>
+        </p>
+
+        <p>
+          Created: <span className="font-medium ml-1">{date}</span>
+        </p>
+      </div>
     </>
   );
 }

@@ -1,18 +1,31 @@
+import {
+  CharacterProps,
+  EpisodeProps,
+  LocationProps,
+  ResponseProps,
+} from "@/types";
+
 export const BASE_URL = "https://rickandmortyapi.com/api";
 
-export const fetchCharacters = async (page?: number) => {
+export const fetchCharacters = async (
+  page: number
+): Promise<ResponseProps<CharacterProps[]>> => {
   const res = await fetch(`${BASE_URL}/character/?page=${page}`);
   const characters = await res.json();
   return characters;
 };
 
-export const fetchLocations = async (page: number) => {
+export const fetchLocations = async (
+  page: number
+): Promise<ResponseProps<LocationProps[]>> => {
   const res = await fetch(`${BASE_URL}/location/?page=${page}`);
   const locations = await res.json();
   return locations;
 };
 
-export const fetchEpisodes = async (page: number) => {
+export const fetchEpisodes = async (
+  page: number
+): Promise<ResponseProps<EpisodeProps[]>> => {
   const res = await fetch(`${BASE_URL}/episode/?page=${page}`);
   const episodes = await res.json();
   return episodes;

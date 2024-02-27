@@ -45,18 +45,18 @@ export interface EpisodeProps {
   created: string;
 }
 
-export type ResultProps = CharacterProps | EpisodeProps | LocationProps;
-
-export interface TableWrapperProps {
-  info: Info;
-  results: unknown;
-}
+export type ResultProps = CharacterProps[] | EpisodeProps[] | LocationProps[];
 
 export interface Info {
   count: number;
   pages: number;
   next: string;
   prev: string;
+}
+
+export interface ResponseProps<T> {
+  info: Info;
+  results: T;
 }
 
 export interface DataTableProps<TData, TValue> {
