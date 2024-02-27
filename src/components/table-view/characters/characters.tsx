@@ -1,5 +1,5 @@
 import { useCharacters } from "@/state/useCharacter";
-import { charsCols } from "../columns";
+import { columns } from "../columns";
 import { TableWrapper } from "../table-wrapper";
 import { usePage } from "../usePage";
 import { CharacterCard } from "./character-card";
@@ -13,8 +13,9 @@ const Characters = () => {
     <>
       {isFetched && (
         <TableWrapper
-          columns={charsCols}
-          data={characters}
+          info={characters.info}
+          columns={columns.charsCols}
+          data={characters.results}
           next={next}
           prev={prev}
           cur={page}

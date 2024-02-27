@@ -9,12 +9,7 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import {
-  CharacterProps,
-  DataTableProps,
-  EpisodeProps,
-  LocationProps,
-} from "@/models";
+import { DataTableProps } from "@/models";
 
 import {
   ColumnFiltersState,
@@ -30,21 +25,22 @@ import React from "react";
 import { PageControls } from "./page-controls";
 import { Input } from "../ui/input";
 
-export const TableWrapper = ({
+export function TableWrapper<TData, TValue>({
+  info,
   data,
   columns,
   children,
   next,
   prev,
   cur,
-}: DataTableProps<unknown, unknown>) => {
-  const [itemSelected, setItemSelected] = useState();
+}: DataTableProps<TData, TValue>) {
+  const [itemSelected, setItemSelected] = useState<unknown>();
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
 
   const table = useReactTable({
-    data: data.results,
+    data: data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onColumnFiltersChange: setColumnFilters,
@@ -119,11 +115,11 @@ export const TableWrapper = ({
         </TableBody>
       </Table>
 
-      <PageControls next={next} prev={prev} max={data.info.pages} cur={cur} />
+      <PageControls next={next} prev={prev} max={info.pages} cur={cur} />
 
       <DialogContent className="sm:max-w-[425px]">
         {React.cloneElement(children, { item: itemSelected })}
       </DialogContent>
     </Dialog>
   );
-};
+}

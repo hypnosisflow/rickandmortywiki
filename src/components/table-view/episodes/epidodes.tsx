@@ -14,8 +14,9 @@ const Episodes = () => {
     <>
       {isFetched && (
         <TableWrapper
-          columns={columns}
-          data={episodes}
+          columns={columns.episodeCols}
+          info={episodes.info}
+          data={episodes.results}
           next={next}
           prev={prev}
           cur={page}

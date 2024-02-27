@@ -8,7 +8,6 @@ import {
   fetchCharacters,
   fetchEpisode,
   fetchEpisodes,
-  fetchInfiniteCharacters,
   fetchLocation,
   fetchLocations,
 } from "@/constants/api";
@@ -50,17 +49,25 @@ export const useEpisode = (id: string) =>
     queryFn: () => fetchEpisode(id),
   });
 
-export const useInfiniteCharacters = () =>
+const infiniteCb = (key: string, cb: (param: number) => any) =>
   useInfiniteQuery({
-    queryKey: ["characters"],
-    queryFn: ({ pageParam }) => fetchInfiniteCharacters(pageParam),
+    queryKey: [key],
+    queryFn: ({ pageParam }) => cb(pageParam),
     initialPageParam: 1,
     getPreviousPageParam: (firstPage) => firstPage.info.prev ?? undefined,
     getNextPageParam: (lastPage, allPages) =>
-      lastPage.info.pages !== allPages.length
+      lastPage.info?.pages !== allPages.length
         ? allPages.length + 1
-        : lastPage.info.pages,
+        : lastPage.info?.pages,
 
     // somehow returns string. so it breakes the query
     // lastPage.info.next ?? undefined,
   });
+
+export const useInfiniteCharacters = () =>
+  infiniteCb("characters", fetchCharacters);
+
+export const useInfiniteLocations = () =>
+  infiniteCb("locations", fetchLocations);
+
+export const useInfiniteEpisodes = () => infiniteCb("episodes", fetchEpisodes);

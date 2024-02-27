@@ -1,33 +1,43 @@
-import { useEffect } from "react";
-import { CharacterLarge } from "./cards/character-large";
-import { CharacterProps } from "@/models";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
+import { CharactersGrid, EpisodesGrid, LocationsGrid } from "./";
 
-import { useInView } from "react-intersection-observer";
-import { useInfiniteCharacters } from "@/state/useCharacter";
+const GRID_VIEW = [
+  {
+    name: "Characters",
+    component: <CharactersGrid />,
+  },
+  {
+    name: "Locations",
+    component: <LocationsGrid />,
+  },
+
+  {
+    name: "Episodes",
+    component: <EpisodesGrid />,
+  },
+];
 
 export const GridView = () => {
-  const { ref, inView } = useInView();
-  const { data, fetchNextPage } = useInfiniteCharacters();
-
-  useEffect(() => {
-    if (inView) {
-      fetchNextPage();
-    }
-  }, [inView, fetchNextPage]);
-
   return (
-    <section className="">
-      {data?.pages.map((page) => {
-        return (
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 my-4">
-            {page.results?.map((character: CharacterProps) => (
-              <CharacterLarge item={character} />
-            ))}
-          </div>
-        );
-      })}
-
-      <div ref={ref}></div>
-    </section>
+    <>
+      <Tabs defaultValue="Characters">
+        <TabsList className="mx-auto flex w-fit">
+          {GRID_VIEW.map((table) => (
+            <TabsTrigger
+              key={table.name}
+              value={table.name}
+              aria-label={table.name}
+            >
+              {table.name}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+        {GRID_VIEW.map((table) => (
+          <TabsContent key={table.name} value={table.name}>
+            {table.component}
+          </TabsContent>
+        ))}
+      </Tabs>
+    </>
   );
 };

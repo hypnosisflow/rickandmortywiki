@@ -12,8 +12,9 @@ const Locations = () => {
     <>
       {isFetched && (
         <TableWrapper
-          columns={columns}
-          data={locations}
+          columns={columns.locationsCols}
+          info={locations.info}
+          data={locations.results}
           next={next}
           prev={prev}
           cur={page}

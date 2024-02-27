@@ -1,9 +1,7 @@
-import { CharacterProps } from "@/models";
+import { CharacterProps, EpisodeProps, LocationProps } from "@/models";
 import { ColumnDef } from "@tanstack/react-table";
 
-const columnsChars = ["Name", "Status", "Species", "Gender", "Created", "URL"];
-
-export const columns: ColumnDef<CharacterProps>[] = [
+export const episodeCols: ColumnDef<EpisodeProps>[] = [
   {
     accessorKey: "id",
     header: "ID",
@@ -22,7 +20,7 @@ export const columns: ColumnDef<CharacterProps>[] = [
   },
 ];
 
-export const charsCols = [
+export const charsCols: ColumnDef<CharacterProps>[] = [
   {
     accessorKey: "id",
     header: "ID",
@@ -49,3 +47,28 @@ export const charsCols = [
     header: "Created",
   },
 ];
+
+export const locationsCols: ColumnDef<LocationProps>[] = [
+  {
+    accessorKey: "id",
+    header: "ID",
+  },
+  {
+    accessorKey: "name",
+    header: "Name",
+  },
+  {
+    accessorKey: "url",
+    header: "Url",
+  },
+  {
+    accessorKey: "created",
+    header: "Created",
+  },
+];
+
+export const columns = {
+  episodeCols,
+  charsCols,
+  locationsCols,
+};

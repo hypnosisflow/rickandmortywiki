@@ -35,9 +35,3 @@ export const fetchEpisode = async (id: string) => {
   const episode = await res.json();
   return episode;
 };
-
-export const fetchInfiniteCharacters = async (pageParam: number) => {
-  const res = await fetch(`${BASE_URL}/character/?page=` + pageParam);
-  const characters = await res.json();
-  return characters;
-};
