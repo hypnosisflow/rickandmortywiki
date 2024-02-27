@@ -3,7 +3,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { LocationProps } from "@/models";
+import { LocationProps } from "@/types";
 
 export function LocationCard({ item }: { item?: LocationProps | undefined }) {
   return (

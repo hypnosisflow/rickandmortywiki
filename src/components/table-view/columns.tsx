@@ -1,4 +1,4 @@
-import { CharacterProps, EpisodeProps, LocationProps } from "@/models";
+import { CharacterProps, EpisodeProps, LocationProps } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 
 export const episodeCols: ColumnDef<EpisodeProps>[] = [

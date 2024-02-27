@@ -1,4 +1,4 @@
-import { useEpisodes } from "@/state/useCharacter";
+import { useEpisodes } from "@/state/queries";
 
 import { columns } from "../columns";
 import { TableWrapper } from "../table-wrapper";

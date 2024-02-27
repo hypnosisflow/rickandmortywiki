@@ -1,5 +1,5 @@
-import { EpisodeProps } from "@/models";
-import { useInfiniteCharacters } from "@/state/useCharacter";
+import { EpisodeProps } from "@/types";
+import { useInfiniteCharacters } from "@/state/queries";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { EpisodesLarge } from "./episodes-large";

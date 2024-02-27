@@ -1,5 +1,5 @@
-import { CharacterProps } from "@/models";
-import { useInfiniteCharacters } from "@/state/useCharacter";
+import { CharacterProps } from "@/types";
+import { useInfiniteCharacters } from "@/state/queries";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { CharacterLarge } from "./character-large";
@@ -18,7 +18,7 @@ export const CharactersGrid = () => {
   }, [inView, fetchNextPage]);
 
   return (
-    <section className="">
+    <section data-label="grid" className="">
       <Input
         placeholder="Filter names..."
         value={filterValue}
