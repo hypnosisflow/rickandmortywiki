@@ -2,26 +2,22 @@ import { DialogHeader } from "@/components/ui/dialog";
 import { EpisodeProps } from "@/models";
 import { DialogTitle, DialogDescription } from "@radix-ui/react-dialog";
 
-export const EpisodeCard = ({
-  selectedItem,
-}: {
-  selectedItem?: EpisodeProps;
-}) => {
+export const EpisodeCard = ({ item }: { item?: EpisodeProps }) => {
   return (
     <>
       <DialogHeader>
         <DialogTitle className="flex gap-2 items-center">
-          {selectedItem?.name}
+          {item?.name}
         </DialogTitle>
         <DialogDescription className="flex flex-col gap-4">
-          <span> {selectedItem?.air_date} </span>
-          <span> {selectedItem?.episode}</span>
+          <span> {item?.air_date} </span>
+          <span> {item?.episode}</span>
           {/* todo: chars */}
           {/* {selectedItem?.characters?.map((char) => (
             <span key={char}> {char} </span>
           ))} */}
-          <span> {selectedItem?.created} </span>
-          <span> {selectedItem?.url}</span>
+          <span> {item?.created} </span>
+          <span> {item?.url}</span>
         </DialogDescription>
       </DialogHeader>
     </>
