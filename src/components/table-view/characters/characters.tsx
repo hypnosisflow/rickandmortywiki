@@ -1,4 +1,4 @@
-import { useCharacters } from "@/state/useCharacter";
+import { useCharacters } from "@/state/queries";
 import { columns } from "../columns";
 import { TableWrapper } from "../table-wrapper";
 import { usePage } from "../usePage";

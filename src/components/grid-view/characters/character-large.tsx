@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CharacterProps } from "@/models";
+import { CharacterProps } from "@/types";
 
 export const CharacterLarge = ({ item }: { item: CharacterProps }) => {
   return (

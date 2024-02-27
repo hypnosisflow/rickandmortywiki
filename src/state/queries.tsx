@@ -10,7 +10,7 @@ import {
   fetchEpisodes,
   fetchLocation,
   fetchLocations,
-} from "@/constants/api";
+} from "@/api/api";
 
 export const useCharacters = (nextPage: number) =>
   useQuery({
@@ -49,7 +49,7 @@ export const useEpisode = (id: string) =>
     queryFn: () => fetchEpisode(id),
   });
 
-const infiniteCb = (key: string, cb: (param: number) => any) =>
+const infiniteCb = (key: string, cb: (param: number) => Promise<any>) =>
   useInfiniteQuery({
     queryKey: [key],
     queryFn: ({ pageParam }) => cb(pageParam),

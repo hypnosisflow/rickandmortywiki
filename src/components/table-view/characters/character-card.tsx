@@ -3,7 +3,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { CharacterProps } from "@/models";
+import { CharacterProps } from "@/types";
 
 export function CharacterCard({ item }: { item?: CharacterProps }) {
   return (

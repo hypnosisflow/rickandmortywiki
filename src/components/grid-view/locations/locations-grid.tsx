@@ -1,5 +1,5 @@
-import { LocationProps } from "@/models";
-import { useInfiniteLocations } from "@/state/useCharacter";
+import { LocationProps } from "@/types/index.ts";
+import { useInfiniteLocations } from "@/state/queries.tsx";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { LocationLarge } from "./location-large.tsx";

@@ -1,4 +1,4 @@
-import { PageControlsProps } from "@/models";
+import { PageControlsProps } from "@/types";
 import { Button } from "../ui/button";
 
 export const PageControls = ({ next, prev, max, cur }: PageControlsProps) => {

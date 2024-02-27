@@ -1,7 +1,7 @@
 import { columns } from "../columns";
 import { TableWrapper } from "../table-wrapper";
 import { usePage } from "../usePage";
-import { useLocations } from "@/state/useCharacter";
+import { useLocations } from "@/state/queries";
 import { LocationCard } from "./location-card";
 
 const Locations = () => {

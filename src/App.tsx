@@ -9,7 +9,7 @@ const view = {
   grid: <GridView />,
 };
 
-function App() {
+const App = () => {
   const { layout, handleSwitchLayout } = useContext(SettingsContext);
 
   const handleScrollTop = () => scrollTo(0, 0);
@@ -42,6 +42,6 @@ function App() {
       </Button>
     </main>
   );
-}
+};
 
 export default App;

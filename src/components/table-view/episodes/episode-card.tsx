@@ -1,5 +1,5 @@
 import { DialogHeader } from "@/components/ui/dialog";
-import { EpisodeProps } from "@/models";
+import { EpisodeProps } from "@/types";
 import { DialogTitle, DialogDescription } from "@radix-ui/react-dialog";
 
 export const EpisodeCard = ({ item }: { item?: EpisodeProps }) => {

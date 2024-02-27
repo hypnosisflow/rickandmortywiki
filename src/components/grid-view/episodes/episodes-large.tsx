@@ -1,4 +1,4 @@
-import { EpisodeProps } from "@/models";
+import { EpisodeProps } from "@/types";
 
 export const EpisodesLarge = ({ item }: { item: EpisodeProps }) => {
   console.log(item);

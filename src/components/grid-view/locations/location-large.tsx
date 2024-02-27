@@ -1,4 +1,4 @@
-import { LocationProps } from "@/models";
+import { LocationProps } from "@/types";
 
 export const LocationLarge = ({ item }: { item: LocationProps }) => {
   console.log(item);

@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
-import { DataTableProps } from "@/models";
+import { DataTableProps } from "@/types";
 
 import {
   ColumnFiltersState,
@@ -53,6 +53,7 @@ export function TableWrapper<TData, TValue>({
   return (
     <Dialog>
       <Input
+        name="filter-name"
         placeholder="Filter names..."
         value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
         onChange={(event) =>
