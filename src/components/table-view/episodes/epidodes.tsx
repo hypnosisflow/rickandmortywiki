@@ -1,5 +1,4 @@
 import { useEpisodes } from "@/state/queries";
-
 import { columns } from "../columns";
 import { TableWrapper } from "../table-wrapper";
 import { usePage } from "../usePage";
@@ -12,10 +11,10 @@ const Episodes = () => {
 
   return (
     <>
-      {isFetched && (
+      {isFetched && episodes && (
         <TableWrapper
-          columns={columns.episodeCols}
           info={episodes.info}
+          columns={columns.episodeCols}
           data={episodes.results}
           next={next}
           prev={prev}

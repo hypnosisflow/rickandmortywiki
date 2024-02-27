@@ -11,7 +11,7 @@ const Characters = () => {
 
   return (
     <>
-      {isFetched && (
+      {isFetched && characters && (
         <TableWrapper
           info={characters.info}
           columns={columns.charsCols}

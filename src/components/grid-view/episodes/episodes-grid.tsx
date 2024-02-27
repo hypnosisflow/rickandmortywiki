@@ -1,12 +1,12 @@
 import { EpisodeProps } from "@/types";
-import { useInfiniteCharacters } from "@/state/queries";
+import { useInfiniteEpisodes } from "@/state/queries";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { EpisodesLarge } from "./episodes-large";
 
 export const EpisodesGrid = () => {
   const { ref, inView } = useInView();
-  const { data, fetchNextPage } = useInfiniteCharacters();
+  const { data, fetchNextPage } = useInfiniteEpisodes();
 
   useEffect(() => {
     if (inView) {

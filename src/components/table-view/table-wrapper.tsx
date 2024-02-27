@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -21,7 +21,6 @@ import {
 import { DialogTrigger } from "@radix-ui/react-dialog";
 import { Info } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import React from "react";
 import { PageControls } from "./page-controls";
 import { Input } from "../ui/input";
 
@@ -100,7 +99,7 @@ export function TableWrapper<TData, TValue>({
                       variant="ghost"
                       size="icon"
                     >
-                      <Info className="h-4 w-4" />
+                      <Info className="h-6 w-6" />
                     </Button>
                   </TableCell>
                 </DialogTrigger>

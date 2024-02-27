@@ -10,10 +10,10 @@ const Locations = () => {
 
   return (
     <>
-      {isFetched && (
+      {isFetched && locations && (
         <TableWrapper
-          columns={columns.locationsCols}
           info={locations.info}
+          columns={columns.locationsCols}
           data={locations.results}
           next={next}
           prev={prev}

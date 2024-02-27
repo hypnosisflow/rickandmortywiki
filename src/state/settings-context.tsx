@@ -12,7 +12,7 @@ interface SettingsWrapperProps {
 export const SettingsContext = createContext<SettingsProps>({});
 
 export const SettingsWrapper = ({ children }: SettingsWrapperProps) => {
-  const [layout, setLayout] = useState("table");
+  const [layout, setLayout] = useState("grid");
 
   const handleSwitchLayout = () => {
     setLayout(layout === "table" ? "grid" : "table");
