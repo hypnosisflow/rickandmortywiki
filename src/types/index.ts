@@ -63,6 +63,8 @@ export interface DataTableProps<TData, TValue> {
   info: Info;
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  // TODO: fix types
+  // Тут не должно быть any, пока не понял что требует TS.
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   next: () => void;
   prev: () => void;

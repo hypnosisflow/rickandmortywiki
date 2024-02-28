@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 interface SettingsProps {
   layout?: string;
@@ -12,9 +12,18 @@ interface SettingsWrapperProps {
 export const SettingsContext = createContext<SettingsProps>({});
 
 export const SettingsWrapper = ({ children }: SettingsWrapperProps) => {
-  const [layout, setLayout] = useState("grid");
+  const [layout, setLayout] = useState("");
+
+  useEffect(() => {
+    const appTheme = localStorage.getItem("appTheme");
+
+    if (appTheme) {
+      setLayout(appTheme as "table" | "grid");
+    }
+  }, []);
 
   const handleSwitchLayout = () => {
+    localStorage.setItem("appTheme", layout === "table" ? "grid" : "table");
     setLayout(layout === "table" ? "grid" : "table");
   };
 

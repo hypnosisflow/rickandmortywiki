@@ -49,8 +49,8 @@ export const useEpisode = (id: string) =>
     queryFn: () => fetchEpisode(id),
   });
 
-// не понимаю что тут должно быть.
-// todo: разобраться
+// TODO: разобраться
+// не понимаю пока как тут типизировать Promise.
 const infiniteCb = (key: string, cb: (param: number) => Promise<any>) =>
   useInfiniteQuery({
     queryKey: [key],

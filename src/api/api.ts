@@ -31,6 +31,7 @@ export const fetchEpisodes = async (
   return episodes;
 };
 
+// можно будет использовать в будущем.
 export const fetchCharacter = async (id: string) => {
   const res = await fetch(`${BASE_URL}/character/${id}`);
   const character = await res.json();

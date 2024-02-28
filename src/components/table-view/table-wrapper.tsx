@@ -15,9 +15,11 @@ import { PageControls } from "./page-controls";
 
 import {
   ColumnFiltersState,
+  SortingState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
 import { Info } from "lucide-react";
@@ -32,6 +34,7 @@ export function TableWrapper<TData, TValue>({
   prev,
   cur,
 }: DataTableProps<TData, TValue>) {
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [itemSelected, setItemSelected] = useState<unknown>();
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -43,8 +46,11 @@ export function TableWrapper<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
     state: {
       columnFilters,
+      sorting,
     },
   });
 
