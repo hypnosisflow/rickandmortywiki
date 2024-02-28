@@ -37,7 +37,15 @@ export const CharactersGrid = () => {
         );
       })}
 
-      <div ref={ref}></div>
+      <div ref={ref} className="w-full ">
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
+          <Error />
+        ) : (
+          <p className="mx-auto">"Pages loaded"</p>
+        )}
+      </div>
     </section>
   );
 };

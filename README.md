@@ -20,8 +20,8 @@ npm run dev
 
 #### Table layout: 
   - Shadcn data table with filtering/sorting names and ids. <br>
-  - Shadcn dialogs with full information about selected object . <br>
-  - Page controls for surfing through paginated data from Rick and Morty API. <br> <br>
+  - Shadcn dialogs with full information about selected object. (My approach was not using React Router).<br>
+  - Page controls for surfing through paginated data from Rick and Morty API. <br><br>
 
 #### Grid layout: 
   - Shadcn cards with full information about object. <br>

@@ -36,7 +36,15 @@ export const EpisodesGrid = () => {
         );
       })}
 
-      <div ref={ref}></div>
+      <div ref={ref}>
+        {isLoading ? (
+          <Loader />
+        ) : isError ? (
+          <Error />
+        ) : (
+          <p className="mx-auto">"Pages loaded"</p>
+        )}
+      </div>
     </section>
   );
 };
