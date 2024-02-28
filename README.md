@@ -1,7 +1,7 @@
 # React + TypeScript + Vite + React Query + Shadcn + Tailwind + Cypress
 
 ## About
-Test tast for Aspirity. <br>
+Test task for Aspirity done by Polozov Artem. <br>
 Rick and Morty Wiki. 
 
 ## Install and run
