@@ -1,15 +1,16 @@
-import { CharacterProps } from "@/types";
-import { useInfiniteCharacters } from "@/state/queries";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+
+import { Loader } from "@/components/ui/loader";
+import { Error } from "@/components/ui/error";
 import { CharacterLarge } from "./character-large";
-// import { Input } from "@/components/ui/input";
+
+import { CharacterProps } from "@/types";
+import { useInfiniteCharacters } from "@/state/queries";
 
 export const CharactersGrid = () => {
   const { ref, inView } = useInView();
-  const { data, fetchNextPage } = useInfiniteCharacters();
-
-  // const [filterValue, setFilterValue] = useState("");
+  const { data, isLoading, isError, fetchNextPage } = useInfiniteCharacters();
 
   useEffect(() => {
     if (inView) {
@@ -17,15 +18,12 @@ export const CharactersGrid = () => {
     }
   }, [inView, fetchNextPage]);
 
-  return (
-    <section data-label="grid" className="">
-      {/* <Input
-        placeholder="Filter names..."
-        value={filterValue}
-        onChange={(event) => setFilterValue(event.target.value)}
-        className="max-w-sm mx-auto mb-2"
-      /> */}
+  if (isLoading) return <Loader />;
 
+  if (isError) return <Error />;
+
+  return (
+    <section data-label="grid">
       {data?.pages.map((page, index) => {
         return (
           <div

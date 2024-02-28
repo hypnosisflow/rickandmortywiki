@@ -7,9 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import { Button } from "@/components/ui/button";
-import { DataTableProps } from "@/types";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { DialogTrigger } from "@radix-ui/react-dialog";
+import { PageControls } from "./page-controls";
 
 import {
   ColumnFiltersState,
@@ -18,11 +20,8 @@ import {
   getFilteredRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { DialogTrigger } from "@radix-ui/react-dialog";
 import { Info } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { PageControls } from "./page-controls";
-import { Input } from "../ui/input";
+import { DataTableProps } from "@/types";
 
 export function TableWrapper<TData, TValue>({
   info,

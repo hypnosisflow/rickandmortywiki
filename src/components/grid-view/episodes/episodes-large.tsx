@@ -27,9 +27,6 @@ export const EpisodesLarge = ({ item }: { item: EpisodeProps }) => {
           Characters:{" "}
           <span className="font-medium ml-1">{item.characters?.length}</span>
         </p>
-        {/* {item.residents?.map((char) => (
-          <p key={char}>{char}</p>
-        ))} */}
         <p>
           Created:<span className="font-medium ml-1"> {date}</span>
         </p>

@@ -10,6 +10,7 @@ import { CharacterProps } from "@/types";
 
 export const CharacterLarge = ({ item }: { item: CharacterProps }) => {
   const date = new Date(item.created).toLocaleDateString();
+
   return (
     <Card className="m-2 overflow-hidden">
       <div className="flex content-start p-2 ">
@@ -45,10 +46,10 @@ export const CharacterLarge = ({ item }: { item: CharacterProps }) => {
           Location:{" "}
           <span className="font-medium ml-1">{item.location?.name}</span>
         </p>
-        {/* <p>Episode</p>
-        {item.episode?.map((episode) => (
-          <p key={episode}>{episode}</p>
-        ))} */}
+        <p>
+          Episodes:{" "}
+          <span className="font-medium ml-1">{item.episode?.length}</span>{" "}
+        </p>
 
         <p>
           Created: <span className="font-medium ml-1">{date}</span>

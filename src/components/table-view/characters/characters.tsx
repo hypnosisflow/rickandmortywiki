@@ -3,11 +3,21 @@ import { columns } from "../columns";
 import { TableWrapper } from "../table-wrapper";
 import { usePage } from "../usePage";
 import { CharacterCard } from "./character-card";
+import { Loader } from "@/components/ui/loader";
+import { Error } from "@/components/ui/error";
 
 const Characters = () => {
   const { page, next, prev } = usePage();
 
-  const { data: characters, isFetched } = useCharacters(page);
+  const {
+    data: characters,
+    isLoading,
+    isError,
+    isFetched,
+  } = useCharacters(page);
+
+  if (isLoading) return <Loader />;
+  if (isError) return <Error />;
 
   return (
     <>
