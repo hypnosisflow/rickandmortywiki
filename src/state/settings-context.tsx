@@ -19,6 +19,8 @@ export const SettingsWrapper = ({ children }: SettingsWrapperProps) => {
 
     if (appTheme) {
       setLayout(appTheme as "table" | "grid");
+    } else {
+      setLayout("table");
     }
   }, []);
 
