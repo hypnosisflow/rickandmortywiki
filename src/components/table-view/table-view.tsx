@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Loader } from "@/components/ui/loader";
 
 const Characters = lazy(() => import("./characters/characters"));
 const Locations = lazy(() => import("./locations/locations"));
@@ -21,8 +22,6 @@ const TABLES = [
 ];
 
 export function TableView() {
-  const Loading = () => <div>Loading...</div>;
-
   return (
     <>
       <Tabs defaultValue="Characters">
@@ -36,7 +35,7 @@ export function TableView() {
 
         {TABLES.map((table) => (
           <TabsContent key={table.name} value={table.name}>
-            <Suspense fallback={<Loading />}>{table.component}</Suspense>
+            <Suspense fallback={<Loader />}>{table.component}</Suspense>
           </TabsContent>
         ))}
       </Tabs>

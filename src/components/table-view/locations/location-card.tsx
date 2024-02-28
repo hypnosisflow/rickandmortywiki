@@ -10,10 +10,10 @@ export function LocationCard({ item }: { item?: LocationProps }) {
 
   return (
     <>
-      <DialogHeader >
+      <DialogHeader>
         <DialogTitle className="flex flex-col mx-auto items-center">
           <span className="text-xl">{item?.name}</span>
-          <DialogDescription >
+          <DialogDescription>
             <span> {item?.type} </span>
           </DialogDescription>
         </DialogTitle>

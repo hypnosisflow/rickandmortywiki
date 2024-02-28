@@ -1,18 +1,26 @@
-import { LocationProps } from "@/types/index.ts";
-import { useInfiniteLocations } from "@/state/queries.tsx";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+
 import { LocationLarge } from "./location-large.tsx";
+import { Loader } from "@/components/ui/loader";
+import { Error } from "@/components/ui/error";
+
+import { LocationProps } from "@/types";
+import { useInfiniteLocations } from "@/state/queries.tsx";
 
 export const LocationsGrid = () => {
   const { ref, inView } = useInView();
-  const { data, fetchNextPage } = useInfiniteLocations();
+  const { data, isLoading, isError, fetchNextPage } = useInfiniteLocations();
 
   useEffect(() => {
     if (inView) {
       fetchNextPage();
     }
   }, [inView, fetchNextPage]);
+
+  if (isLoading) return <Loader />;
+
+  if (isError) return <Error />;
 
   return (
     <section className="">

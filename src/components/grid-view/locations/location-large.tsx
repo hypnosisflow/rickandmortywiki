@@ -27,9 +27,6 @@ export const LocationLarge = ({ item }: { item: LocationProps }) => {
           Residents:{" "}
           <span className="font-medium ml-1">{item.residents?.length}</span>
         </p>
-        {/* {item.residents?.map((char) => (
-          <p key={char}>{char}</p>
-        ))} */}
         <p>
           Created: <span className="font-medium ml-1">{date}</span>
         </p>

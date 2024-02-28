@@ -3,10 +3,15 @@ import { TableWrapper } from "../table-wrapper";
 import { usePage } from "../usePage";
 import { useLocations } from "@/state/queries";
 import { LocationCard } from "./location-card";
+import { Loader } from "@/components/ui/loader";
+import { Error } from "@/components/ui/error";
 
 const Locations = () => {
   const { page, next, prev } = usePage();
-  const { data: locations, isFetched } = useLocations(page);
+  const { data: locations, isLoading, isError, isFetched } = useLocations(page);
+
+  if (isLoading) return <Loader />;
+  if (isError) return <Error />;
 
   return (
     <>

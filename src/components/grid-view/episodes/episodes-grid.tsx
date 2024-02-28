@@ -1,18 +1,25 @@
-import { EpisodeProps } from "@/types";
-import { useInfiniteEpisodes } from "@/state/queries";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { EpisodesLarge } from "./episodes-large";
+import { Error } from "@/components/ui/error";
+import { Loader } from "@/components/ui/loader";
+
+import { useInfiniteEpisodes } from "@/state/queries";
+import { EpisodeProps } from "@/types";
 
 export const EpisodesGrid = () => {
   const { ref, inView } = useInView();
-  const { data, fetchNextPage } = useInfiniteEpisodes();
+  const { data, isLoading, isError, fetchNextPage } = useInfiniteEpisodes();
 
   useEffect(() => {
     if (inView) {
       fetchNextPage();
     }
   }, [inView, fetchNextPage]);
+
+  if (isLoading) return <Loader />;
+
+  if (isError) return <Error />;
 
   return (
     <section className="">
