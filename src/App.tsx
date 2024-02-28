@@ -5,9 +5,9 @@ import { GridView } from "@/components/grid-view/grid-view";
 import { TableView } from "@/components/table-view/table-view";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/header/header";
+import { Footer } from "@/components/footer/footer";
 
-import { ArrowUp, Link } from "lucide-react";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import { ArrowUp } from "lucide-react";
 
 const view = {
   table: <TableView />,
@@ -38,20 +38,7 @@ const App = () => {
       >
         <ArrowUp />
       </Button>
-
-      <div className="h-40 bg-slate-50 mt-10 flex justify-center flex-col items-center">
-        <a
-          href="https://github.com/hypnosisflow/rickandmortywiki"
-          target="_blank"
-          className="flex items-center gap-2"
-        >
-          <span>Source code</span>
-          <GitHubLogoIcon />
-        </a>
-        <p className="text-center text-slate-300 text-xs">
-          hypnosisflow @ 2024
-        </p>
-      </div>
+      <Footer />
     </>
   );
 };
